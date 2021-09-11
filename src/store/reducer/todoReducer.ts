@@ -34,7 +34,7 @@ const todoReducer: Reducer<State, TodoAction> = (
         //         todo.todo = action.payload[0].todo;
         //         todo.date = action.payload[0].date;
         //         }
-                
+
         //     })
         //   return tempTodos;
         // },
@@ -44,6 +44,8 @@ const todoReducer: Reducer<State, TodoAction> = (
         ...state,
         todos: state.todos.filter((todo) => todo.id !== action.payload),
       };
+    default:
+      return state;
   }
 };
 export default todoReducer;
