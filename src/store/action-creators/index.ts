@@ -6,6 +6,12 @@ export const getTodos = () => {
     type: ActionTypes.GET_TODO,
   };
 };
+export const setTodos = (todos: TodoStateTypes[]) => {
+  return {
+    type: ActionTypes.SET_TODO,
+    payload: todos,
+  };
+};
 export const createTodo = (todos: TodoStateTypes[]) => {
   return {
     type: ActionTypes.CREATE_TODO,

@@ -1,5 +1,6 @@
 export enum ActionTypes {
     GET_TODO = 'get_todos',
+    SET_TODO = 'set_todos',
     CREATE_TODO = 'create_todo',
     UPDATE_TODO = 'update_todo',
     DELETE_TODO = 'delete_todo'
@@ -11,8 +12,8 @@ export interface TodoStateTypes {
     date: string;
 }
 
-interface GetTodoAction {
-    type: ActionTypes.GET_TODO,
+interface SetTodoAction {
+    type: ActionTypes.SET_TODO,
     payload: TodoStateTypes[],
 }
 interface CraeteTodoAction {
@@ -28,4 +29,8 @@ interface DeleteTodoAction {
     payload: string,
 }
 
-export type TodoAction = GetTodoAction | CraeteTodoAction | UpdateTodoAction | DeleteTodoAction
+export type TodoAction =
+  | SetTodoAction
+  | CraeteTodoAction
+  | UpdateTodoAction
+  | DeleteTodoAction;

@@ -1,29 +1,24 @@
 import React, { useEffect } from 'react';
-import axios, {AxiosResponse} from "axios";
-import {useSelector} from 'react-redux'
+import {useSelector, useDispatch} from 'react-redux'
 import {getTodos} from '../store/action-creators'
 import { State } from '../store/reducer';
+import {TodoStateTypes} from '../store/actions-types'
 
 
 const TodoList = () => {
-
-    // const url = 'api/v1/todo'
-    // const fecthData = async () =>{
-    //     const res:AxiosResponse  = await axios.get(url);
-    //     console.log(res.data);
-    // }
+    const dispatch = useDispatch()
 
     useEffect( () => {
-        getTodos();
-    },[])
+        dispatch(getTodos())
+    },[dispatch])
 
-    const todo = useSelector((state:State) => state.todo)
-    console.log(todo);
+    const {todos} = useSelector((state:State) => state.todos)
     
-
     return (
         <div>
-            Hello List
+            {todos && todos.map((todo:TodoStateTypes) => (
+                <h2>{todo.todo}</h2>
+            ))}
         </div>
     );
 };
